@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="header :: headfragment (pageTitle = 'Login')"></head>
+  <body>
+    <section class="login-box text-center">
+      <h5 class="mb-3">MEALMATIC</h5>
+      <p class="mb-2">Enter PIN</p>
+      <form th:action="@{/login}" method="post">
+        <input type="password" name="pass" maxlength="6" class="form-control pin-input mb-3" placeholder="******"/>
+        <input class="btn btn-login w-100" type="submit" value="Login">
+      </form>
+    </section>
+  </body>
+</html>

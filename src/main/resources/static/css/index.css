@@ -1,0 +1,118 @@
+body {
+    background-color: #0f0f0f;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+.login-box {
+    max-width: 320px;
+    margin: auto;
+    margin-top: 15vh;
+    padding: 20px;
+    background-color: #1b1b1b;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.pin-input {
+    background-color: #2a2a2a;
+    color: transparent;
+    text-shadow: 0 0 0 #fff;
+    border: none;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 16x;
+    padding: 6px 10px;
+}
+.btn-login {
+    background-color: #2ecc71;
+    border: none;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+}
+.btn-login:hover {
+    background-color: #27ae60;
+}
+.container-box {
+    max-width: 540px;
+    margin: auto;
+}
+.menu-item {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-size: 0.9rem
+}
+.btn-add, .btn-del {
+    border: none;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+}
+.btn-add {
+    background-color: #16a085;
+}
+.btn-add:hover {background-color: #1abc9c;}
+.btn-del {background-color: #c0392b;}
+.btn-del:hover {background-color: #e743c3;}
+.btn-order {
+    background-color: #27ae60;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+.btn-order:hover {
+    background-color: #1e8449;
+}
+.added-info {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+.accordion-button:not(.collapsed) {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+.accordion-button {
+    background-color: #181818;
+    color: #fff;
+}
+.accordion-button::after {
+    color: #fff;
+}
+.accordion-items {
+    border: none !important;
+    background-color: #141414;
+}
+.table-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.table-item {
+    cursor: pointer;
+    user-select: none;
+    flex: 1 0 22%;
+    aspect-ratio: 1 / 1;
+    background-color: #2d2d2d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+.table-item:hover {
+    background-color: #34495e;
+}
+.table-item.selected {
+    background-color: #2980b9;
+}
+.table-item.occupied {
+    background-color: #c0392b
+}
+.pagination .page-link {
+    background-color: #1f1f1f;
+    color: #fff;
+    border: none;
+}
+.pagination .page-item.active .page-link {
+    background-color: #2980b9;
+}

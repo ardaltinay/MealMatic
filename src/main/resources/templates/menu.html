@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:include="header :: headfragment (pageTitle = 'Menu')"></head>
+    <body class="p-3">
+        <section class="container-box">
+            <h5 class="mb-3">Menu</h5>
+            <div class="accordion mb-3" id="menuAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMain">
+                            Main Dishes
+                        </button>
+                    </h2>
+                    <div id="collapseMain" class="accordion-collapse collapse show" data-bs-parent="#menuAccordion">
+                        <div class="accordion-body">
+                            <div class="menu-item d-flex justify-content-between align-items-center" id="item-steak">
+                                <div>
+                                    <span>Steak</span>
+                                    <div class="added-info" id="steakInfo"></div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-add me-1" onclick="openModal('Steak')">Add</button>
+                                    <button class="btn btn-del" onclick="removeItem('Steak')">Delete</button>
+                                </div>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-center" id="item-burger">
+                                <div>
+                                    <span>Burger</span>
+                                    <div class="added-info" id="burgerInfo"></div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-add me-1" onclick="openModal('Burger')">Add</button>
+                                    <button class="btn btn-del" onclick="removeItem('Burger')">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDrinks">
+                            Main Dishes
+                        </button>
+                    </h2>
+                    <div id="collapseDrinks" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
+                        <div class="accordion-body">
+                            <div class="menu-item d-flex justify-content-between align-items-center" id="item-cocktail">
+                                <div>
+                                    <span>Steak</span>
+                                    <div class="added-info" id="cocktailInfo"></div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-add me-1" onclick="openModal('Steak')">Add</button>
+                                    <button class="btn btn-del" onclick="removeItem('Steak')">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="/summary" class="btn btn-order w-100 mt-3">View Order</a>
+        </section>
+        <!-- MODAL-->
+        <section class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalItemName">Add Item</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="itemQty" class="form-label">Quantity:</label>
+                        <input type="number" id="itemQty" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" onclick="confirmAdd()">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div th:replace="footer :: scriptfragment"></div>
+    </body>
+</html>
