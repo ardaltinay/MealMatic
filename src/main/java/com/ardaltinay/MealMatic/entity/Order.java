@@ -1,8 +1,10 @@
 package com.ardaltinay.MealMatic.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -17,13 +19,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Order extends EntityAbstract implements Serializable {
+public class Order extends AbstractEntity implements Serializable {
     @Column(name = "order_number")
     private String orderNumber;
 
@@ -38,5 +40,9 @@ public class Order extends EntityAbstract implements Serializable {
 
     @OneToMany(mappedBy = "order")
     private List<Product> products;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "table_id")
+    private com.ardaltinay.MealMatic.entity.Table table;
 
 }

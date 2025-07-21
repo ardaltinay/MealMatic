@@ -20,13 +20,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Employee extends EntityAbstract implements Serializable {
+public class Employee extends AbstractEntity implements Serializable {
     @Column
     private String tckn;
 

@@ -21,15 +21,18 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Product extends EntityAbstract implements Serializable {
+public class Product extends AbstractEntity implements Serializable {
     @Column
     private String name;
+
+    @Column
+    private String description;
 
     @Column(precision = 11, scale = 2)
     private BigDecimal price;
@@ -37,6 +40,9 @@ public class Product extends EntityAbstract implements Serializable {
     @Column
     @Enumerated(value = EnumType.STRING)
     private ProductType type;
+
+    @Column(name = "is_best_seller")
+    private Boolean isBestSeller;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

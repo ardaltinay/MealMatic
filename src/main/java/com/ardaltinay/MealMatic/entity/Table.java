@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,15 +14,16 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@jakarta.persistence.Table(name = "table")
+@jakarta.persistence.Table(name = "tables")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Table extends EntityAbstract implements Serializable {
+public class Table extends AbstractEntity implements Serializable {
     @Column
     private Short number;
 
@@ -34,4 +36,7 @@ public class Table extends EntityAbstract implements Serializable {
 
     @Column(name = "is_available")
     private Boolean isAvailable;
+
+    @OneToMany(mappedBy = "table")
+    private List<Order> orders;
 }

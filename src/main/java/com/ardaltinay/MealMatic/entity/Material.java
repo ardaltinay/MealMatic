@@ -1,6 +1,7 @@
 package com.ardaltinay.MealMatic.entity;
 
 import com.ardaltinay.MealMatic.enums.MaterialType;
+import com.ardaltinay.MealMatic.enums.MeasurementUnitEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,16 +18,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "material")
+@Table(name = "materials")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Material extends EntityAbstract implements Serializable {
+public class Material extends AbstractEntity implements Serializable {
     @Column
     private String name;
 
@@ -34,8 +36,15 @@ public class Material extends EntityAbstract implements Serializable {
     @JsonFormat(pattern="dd-MM-yyyy")
     private LocalDate expirationDate;
 
-    @Column(name = "remaining_amount")
-    private Integer remainingAmount;
+    @Column(name = "remaining_stock", precision = 11, scale = 2)
+    private BigDecimal remainingStock;
+
+    @Column(name = "measurement_unit")
+    @Enumerated(value = EnumType.STRING)
+    private MeasurementUnitEnum measurementUnit;
+
+    @Column(name = "out_of_stock")
+    private Boolean outOfStock = false;
 
     @Column
     @Enumerated(value = EnumType.STRING)
