@@ -9,8 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -21,24 +22,30 @@ public class LoginService {
     private final PasswordEncoder passwordEncoder;
     private final SessionUtils sessionUtils;
 
-    public String login(HttpServletRequest servletRequest, ModelAndView modelAndView) {
+
+    public Map<String, Object> login(HttpServletRequest servletRequest) {
         String tckn = WebUtils.getParameter(servletRequest, "tckn");
         String pass = WebUtils.getParameter(servletRequest, "pass");
+
+        Map<String, Object> result = new HashMap<>();
         Optional<Employee> optionalEmployee = employeeRepository.findByTckn(tckn);
 
         if (optionalEmployee.isEmpty()) {
-            return "login";
+            result.put("success", false);
+            result.put("message", "Invalid TCKN");
+            return result;
         }
 
         if (passwordEncoder.matches(pass, optionalEmployee.get().getPass())) {
             sessionUtils.setAttribute("USER_TCKN", tckn);
             sessionUtils.setAttribute("LOGGED_IN", true);
-            return "redirect:/tables";
+            result.put("success", true);
+            return result;
         }
 
-
-
-        return "login";
-
+        result.put("success", false);
+        result.put("message", "Invalid Password");
+        return result;
     }
+
 }

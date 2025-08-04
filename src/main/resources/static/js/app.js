@@ -25,3 +25,30 @@ grid.querySelectorAll('.table-item').forEach(item => {
         item.classList.add('selected');
     });
 });
+/*function validateLogin() {
+    const tckn = document.querySelector('input[name="tckn"]').value;
+    const pass = document.querySelector('input[name="pass"]').value;
+    if (tckn.length !== 11 || pass.length !== 6) {
+        showErrorModal()
+        return false;
+    }
+    return true;
+}
+function showErrorModal() {
+    const modal = new bootstrap.Modal(document.getElementById('errorModal'));
+    modal.show();
+}*/
+
+function submitLoginForm() {
+    $.post('/login', {
+        tckn: $('input[name="tckn"]').val(),
+        pass: $('input[name="pass"]').val()
+    }, function(data) {
+        if (data.success) {
+            window.location.href = '/tables';
+        } else {
+            $("#loginErrorModal .modal-body").text(data.message);
+            $("#loginErrorModal").modal("show");
+        }
+    });
+}
