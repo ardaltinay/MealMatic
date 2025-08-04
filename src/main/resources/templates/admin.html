@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head th:include="header :: headfragment (pageTitle = 'Login')"></head>
+  <head th:include="~{header :: headfragment (pageTitle = 'Admin')}"></head>
   <body class="p-3">
     <div class="container">
       <h4 class="mb-4">Admin Panel</h4>
@@ -110,5 +110,5 @@
       </div>
     </div>
   </body>
-  <div th:replace="footer :: scriptfragment"></div>
+  <div th:replace="~{footer :: scriptfragment}"></div>
 </html>

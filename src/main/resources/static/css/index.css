@@ -81,6 +81,9 @@ body {
     border: none !important;
     background-color: #141414;
 }
+.accordion-body span {
+    color: #fff;
+}
 .table-grid {
     display: flex;
     flex-wrap: wrap;

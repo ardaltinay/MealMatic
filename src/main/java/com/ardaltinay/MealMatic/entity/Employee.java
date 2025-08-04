@@ -37,6 +37,9 @@ public class Employee extends AbstractEntity implements Serializable {
     private String surname;
 
     @Column
+    private String pass;
+
+    @Column
     private String phone;
 
     @Column(name = "date_of_birth")

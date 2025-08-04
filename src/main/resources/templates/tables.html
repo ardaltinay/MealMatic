@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:include="header :: headfragment (pageTitle = 'Menu')"></head>
+<head th:include="~{header :: headfragment (pageTitle = 'Menu')}"></head>
 <body class="p-3">
     <section class="container-box">
         <h5 class="mb-3">Select Table</h5>
@@ -22,7 +22,8 @@
             </ul>
         </nav>
         <a href="/menu" class="btn btn-primary w-100 mt-3">Next</a>
+        <p th:text="${#ctx.session.containsKey('LOGGED_IN')} ? 'BAŞARILI' : 'BAŞARISIZ'"></p>
     </section>
-    <div th:replace="footer :: scriptfragment"></div>
+    <div th:replace="~{footer :: scriptfragment}"></div>
 </body>
 </html>
