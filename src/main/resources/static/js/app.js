@@ -25,19 +25,6 @@ grid.querySelectorAll('.table-item').forEach(item => {
         item.classList.add('selected');
     });
 });
-/*function validateLogin() {
-    const tckn = document.querySelector('input[name="tckn"]').value;
-    const pass = document.querySelector('input[name="pass"]').value;
-    if (tckn.length !== 11 || pass.length !== 6) {
-        showErrorModal()
-        return false;
-    }
-    return true;
-}
-function showErrorModal() {
-    const modal = new bootstrap.Modal(document.getElementById('errorModal'));
-    modal.show();
-}*/
 
 function submitLoginForm() {
     $.post('/login', {
