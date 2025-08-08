@@ -1,5 +1,5 @@
 package com.ardaltinay.MealMatic.enums;
 
-public enum MaterialType {
+public enum MaterialTypeEnum {
     LIQUID, SOLID
 }

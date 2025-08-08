@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="~{header :: headfragment (pageTitle = 'Access Denied')}"></head>
+  <body>
+    <section class="container-box">
+      <h1>⚠️ Access Denied!</h1>
+      <p>You do not have permission to access this page.</p>
+      <a th:href="@{/login}">Back to Login</a>
+    </section>
+  </body>
+</html>

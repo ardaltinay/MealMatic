@@ -48,7 +48,7 @@ public class Employee extends AbstractEntity implements Serializable {
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    private RoleEnum role;
+    private RoleEnum role = RoleEnum.EMPLOYEE;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id", referencedColumnName = "id")

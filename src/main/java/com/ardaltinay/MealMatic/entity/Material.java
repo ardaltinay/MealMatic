@@ -1,6 +1,6 @@
 package com.ardaltinay.MealMatic.entity;
 
-import com.ardaltinay.MealMatic.enums.MaterialType;
+import com.ardaltinay.MealMatic.enums.MaterialTypeEnum;
 import com.ardaltinay.MealMatic.enums.MeasurementUnitEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
@@ -48,7 +48,7 @@ public class Material extends AbstractEntity implements Serializable {
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    private MaterialType type;
+    private MaterialTypeEnum type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")

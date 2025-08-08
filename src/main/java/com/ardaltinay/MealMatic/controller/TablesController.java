@@ -23,16 +23,9 @@ public class TablesController {
     private final TableService tableService;
 
     @GetMapping
-    public ModelAndView getTables(ModelAndView modelAndView) {
-        modelAndView.setViewName("tables");
-        return modelAndView;
-    }
-
-    @GetMapping("/list-all")
-    @ResponseBody
-    public Map<String, Object> listTables(HttpServletRequest servletRequest,
-                                          @RequestParam(defaultValue = "0") int page,
-                                          @RequestParam(defaultValue = "5") int size) {
+    public ModelAndView getTables(ModelAndView modelAndView,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "5") int size) {
         return tableService.getAllTablesWithPagination(page, size);
     }
 

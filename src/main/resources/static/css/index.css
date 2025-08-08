@@ -75,7 +75,7 @@ body {
     color: #fff;
 }
 .accordion-button::after {
-    color: #fff;
+    color: #fff !important;
 }
 .accordion-items {
     border: none !important;

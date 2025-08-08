@@ -1,5 +1,5 @@
 package com.ardaltinay.MealMatic.enums;
 
-public enum ProductType {
+public enum ProductTypeEnum {
     BEVERAGE, FOOD
 }

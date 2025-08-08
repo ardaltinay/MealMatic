@@ -4,6 +4,7 @@ import com.ardaltinay.MealMatic.entity.Employee;
 import com.ardaltinay.MealMatic.repository.EmployeeRepository;
 import com.ardaltinay.MealMatic.utils.SessionUtils;
 import com.ardaltinay.MealMatic.utils.WebUtils;
+import com.ardaltinay.MealMatic.utils.constant.Constants;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,8 +38,8 @@ public class LoginService {
         }
 
         if (passwordEncoder.matches(pass, optionalEmployee.get().getPass())) {
-            sessionUtils.setAttribute("USER_TCKN", tckn);
-            sessionUtils.setAttribute("LOGGED_IN", true);
+            sessionUtils.setAttribute(Constants.USER_TCKN, tckn);
+            sessionUtils.setAttribute(Constants.LOGGED_IN, true);
             result.put("success", true);
             return result;
         }

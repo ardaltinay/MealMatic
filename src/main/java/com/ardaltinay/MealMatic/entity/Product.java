@@ -1,6 +1,7 @@
 package com.ardaltinay.MealMatic.entity;
 
-import com.ardaltinay.MealMatic.enums.ProductType;
+import com.ardaltinay.MealMatic.enums.ProductCategoryEnum;
+import com.ardaltinay.MealMatic.enums.ProductTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,7 +40,11 @@ public class Product extends AbstractEntity implements Serializable {
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    private ProductType type;
+    private ProductTypeEnum type;
+
+    @Column(name = "product_category")
+    @Enumerated(value = EnumType.STRING)
+    private ProductCategoryEnum productCategory;
 
     @Column(name = "is_best_seller")
     private Boolean isBestSeller;

@@ -5,6 +5,6 @@
 
     <div th:fragment="scriptfragment" th:remove="tag">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="/static/js/app.js"></script>
+        <script th:src="@{/static/js/app.js}"></script>
     </div>
 </html>

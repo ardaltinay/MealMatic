@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,12 +22,13 @@ public class TableService {
     private final TableRepository tableRepository;
     private final TableConverter tableConverter;
 
-    public Map<String, Object> getAllTablesWithPagination(int page, int size) {
-        Map<String, Object> response = new HashMap<>();
+    public ModelAndView getAllTablesWithPagination(int page, int size) {
+        ModelAndView modelAndView = new ModelAndView();
         Page<Table> tablesPage = tableRepository.findAll(PageRequest.of(page, size, Sort.by("number").ascending()));
-        response.put("tablesPage", tablesPage);
-        response.put("currentPage", page);
-        return response;
+        modelAndView.addObject("tablesPage", tablesPage);
+        modelAndView.addObject("currentPage", page);
+        modelAndView.setViewName("tables");
+        return modelAndView;
     }
 
     public Map<String, Object> createTable(CreateTableRequest createTableRequest) {
