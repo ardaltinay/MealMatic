@@ -1,0 +1,35 @@
+<section th:fragment="editProductForm">
+  <form id="editProductForm" action="/admin/update-product" method="POST">
+    <div class="mb-3">
+      <label for="productName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="productName" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="productDescription" class="form-label">Description</label>
+      <input type="text" class="form-control" id="productDescription" name="description" required>
+    </div>
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Price</label>
+      <input type="number" class="form-control" id="productPrice" name="price" required>
+    </div>
+    <div class="mb-3">
+      <label for="productType" class="form-label">Product Type</label>
+      <select class="form-select" id="productType" name="type">
+        <option value="BEVERAGE">Beverage</option>
+        <option value="FOOD">Food</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="productCategory" class="form-label">Product Category</label>
+      <select class="form-select" id="productCategory" name="category">
+        <option value="MAIN_DISHES">Main Dishes</option>
+        <option value="HOT_STARTERS">Hot Starters</option>
+        <option value="COLD_STARTERS">Cold Starters</option>
+        <option value="DRINKS">Drinks</option>
+      </select>
+    </div>
+    <div class="mb-3 text-center">
+      <button type="button" class="btn btn-primary" onclick="submitEditProductForm()">Update</button>
+    </div>  
+  </form>
+</section>

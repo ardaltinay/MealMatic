@@ -1,0 +1,7 @@
+<section th:fragment="addItemBasket">
+  <label for='itemQty' class='form-label'>Quantity:</label>
+  <input type='number' id='itemQty' name="productCount" class='form-control' value='1' min='1'>
+</section>
+<section th:fragment="addItemBasketFooter">
+  <button class='btn btn-success' onclick='confirmAdd()'>Confirm</button>
+</section>

@@ -2,113 +2,124 @@
 <html lang="en">
   <head th:include="~{header :: headfragment (pageTitle = 'Admin')}"></head>
   <body class="p-3">
-    <div class="container">
-      <h4 class="mb-4">Admin Panel</h4>
-      <ul class="nav nav-tabs mb-3" id="adminTab" role="tablist">
+    <div class="container my-4">
+      <h4 class="mb-4 text-center text-md-start">Admin Panel</h4>
+      <ul class="nav nav-tabs mb-3 justify-content-center justify-content-md-start" id="adminTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button">Dashboard</button>
+          <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="reports-tab" data-bs-toggle="tab" data-bs-target="#reports" type="button">Reports</button>
+          <button class="nav-link" id="reports-tab" data-bs-toggle="tab" data-bs-target="#reports" type="button" role="tab" aria-controls="reports" aria-selected="false">Reports</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="menu-tab" data-bs-toggle="tab" data-bs-target="#menu" type="button">Menu Management</button>
+          <button class="nav-link" id="menu-tab" data-bs-toggle="tab" data-bs-target="#menu" type="button" role="tab" aria-controls="menu" aria-selected="false">Menu Management</button>
         </li>
       </ul>
+
       <div class="tab-content" id="adminTabContent">
-        <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <div class="card p-3">
+        <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+          <div class="row g-3">
+            <div class="col-12 col-md-4">
+              <div class="card p-3 text-center">
                 <h6>Total Sales Today</h6>
                 <h4>$1,125</h4>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <div class="card p-3">
+            <div class="col-12 col-md-4">
+              <div class="card p-3 text-center">
                 <h6>Top Selling Item</h6>
                 <h4>Burger</h4>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <div class="card p-3">
+            <div class="col-12 col-md-4">
+              <div class="card p-3 text-center">
                 <h6>Active Tables</h6>
                 <h4>8</h4>
               </div>
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="reports" role="tabpanel">
+
+        <div class="tab-pane fade" id="reports" role="tabpanel" aria-labelledby="reports-tab">
           <div class="card p-3">
             <h6>Sales Report</h6>
-            <table class="table table-dark table-striped mt-3">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Orders</th>
-                  <th>Total Revenue</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2025-06-07</td>
-                  <td>45</td>
-                  <td>$950</td>
-                </tr>
-                <tr>
-                  <td>2025-06-08</td>
-                  <td>65</td>
-                  <td>$1350</td>
-                </tr>
-                <tr>
-                  <td>2025-06-09</td>
-                  <td>55</td>
-                  <td>$1100</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped mt-3 mb-0">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Orders</th>
+                    <th>Total Revenue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2025-06-07</td>
+                    <td>45</td>
+                    <td>$950</td>
+                  </tr>
+                  <tr>
+                    <td>2025-06-08</td>
+                    <td>65</td>
+                    <td>$1350</td>
+                  </tr>
+                  <tr>
+                    <td>2025-06-09</td>
+                    <td>55</td>
+                    <td>$1100</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="menu" role="tabpanel">
+
+        <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
           <div class="card p-3">
-            <h6>Menu Management</h6>
-            <table class="table table-dark table-bordered mt-3">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>In Stock</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Burger</td>
-                  <td>Main Dish</td>
-                  <td>$10</td>
-                  <td>Yes</td>
-                  <td>
-                    <button class="btn btn-sm btn-primary">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Cocktail</td>
-                  <td>Drink</td>
-                  <td>$5</td>
-                  <td>Yes</td>
-                  <td>
-                    <button class="btn btn-sm btn-primary">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 gap-2">
+              <h6 class="mb-0">Menu Management</h6>
+              <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-dark table-bordered mb-0" id="productTable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="product : ${products}">
+                    <td th:text="${product.name}">Product Name</td>
+                    <td th:text="${product.description}">Product Description</td>
+                    <td th:text="${product.category}">Product Category</td>
+                    <td th:text="${product.type}">Product Type</td>
+                    <td th:text="${product.price}">Product Price</td>
+                    <td class="text-nowrap">
+                      <button class="btn btn-sm btn-primary me-1 mb-1 mb-md-0" th:attr="data-id=${product.id}" th:onclick="'editProduct(this.dataset.id)'">Edit</button>
+                      <button class="btn btn-sm btn-danger" th:attr="data-id=${product.id}" th:onclick="'deleteProduct(this.dataset.id)'">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- MODAL-->
+    <th:block th:replace="~{modal :: modalfragment(modalId='addProductModal', modalTitle='Add Product')}">
+      <th:block th:fragment="modalBody" th:replace="add-product :: addProductForm"></th:block>
+      <th:block th:fragment="modalFooter"></th:block>
+    </th:block>
+    <th:block th:replace="~{modal :: modalfragment(modalId='editProductModal', modalTitle='Update Product')}">
+      <th:block th:fragment="modalBody" th:replace="edit-product :: editProductForm"></th:block>
+      <th:block th:fragment="modalFooter"></th:block>
+    </th:block>
   </body>
   <div th:replace="~{footer :: scriptfragment}"></div>
 </html>

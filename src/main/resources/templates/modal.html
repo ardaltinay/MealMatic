@@ -1,5 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <div th:fragment="modalfragment (modalId, modalTitle, modalBody, modalFooter)">
+  <div th:fragment="modalfragment (modalId, modalTitle)">
     <section class="modal fade" th:id="${modalId}" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content bg-dark text-white">
@@ -7,13 +7,8 @@
                     <h5 class="modal-title" id="modalItemName" th:text="${modalTitle}">Add Item</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body" th:utext="${modalBody}">
-                    <!--<label for="itemQty" class="form-label">Quantity:</label>
-                    <input type="number" id="itemQty" class="form-control" value="1" min="1">-->
-                </div>
-                <div class="modal-footer" th:utext="${modalFooter}">
-                    <!--<button class="btn btn-success" onclick="confirmAdd()">Confirm</button>-->
-                </div>
+                <div class="modal-body" th:insert="~{::modalBody}"></div>
+                <div class="modal-footer" th:insert="~{::modalFooter}"></div>
             </div>
         </div>
     </section>

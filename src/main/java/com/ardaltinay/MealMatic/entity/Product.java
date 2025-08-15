@@ -39,12 +39,15 @@ public class Product extends AbstractEntity implements Serializable {
     private BigDecimal price;
 
     @Column
+    private Short count;
+
+    @Column
     @Enumerated(value = EnumType.STRING)
     private ProductTypeEnum type;
 
-    @Column(name = "product_category")
+    @Column
     @Enumerated(value = EnumType.STRING)
-    private ProductCategoryEnum productCategory;
+    private ProductCategoryEnum category;
 
     @Column(name = "is_best_seller")
     private Boolean isBestSeller;
