@@ -5,6 +5,7 @@ import com.ardaltinay.MealMatic.converter.ProductConverter;
 import com.ardaltinay.MealMatic.dto.CreateEmployeeRequest;
 import com.ardaltinay.MealMatic.dto.CreateProductRequest;
 import com.ardaltinay.MealMatic.dto.ProductDto;
+import com.ardaltinay.MealMatic.dto.UpdateProductRequest;
 import com.ardaltinay.MealMatic.entity.Product;
 import com.ardaltinay.MealMatic.repository.EmployeeRepository;
 import com.ardaltinay.MealMatic.repository.ProductRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -44,6 +46,25 @@ public class AdminService {
         return map;
     }
 
+    public Map<String, Object> updateProduct(UpdateProductRequest request) {
+        Map<String, Object> map = new HashMap<>();
+        Optional<Product> optionalProduct = productRepository.findById(UUID.fromString(request.id()));
+        if (optionalProduct.isEmpty()) {
+            throw new RuntimeException("Can not find product with given id: " + request.id());
+        }
+        Product product = optionalProduct.get();
+        productConverter.convert(product, request);
+
+        try {
+            productRepository.save(product);
+            map.put("success", true);
+        } catch (Exception e) {
+            log.error("Error while updating product object!");
+            map.put("success", false);
+        }
+        return map;
+    }
+
     public ModelAndView getProducts(ModelAndView modelAndView) {
         List<ProductDto> products = productRepository.findAll()
                 .stream()
@@ -64,6 +85,18 @@ public class AdminService {
 
         map.put("product", productDto);
         map.put("success", true);
+        return map;
+    }
+
+    public Map<String, Object> deleteProduct(String id) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            productRepository.deleteById(UUID.fromString(id));
+            map.put("success", true);
+        } catch (Exception e) {
+            log.error("Error while deleting product object!");
+            map.put("success", false);
+        }
         return map;
     }
 }

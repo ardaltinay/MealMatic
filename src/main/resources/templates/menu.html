@@ -65,6 +65,11 @@
             <th:block th:fragment="modalBody" th:replace="add-item-basket :: addItemBasket"></th:block>
             <th:block th:fragment="modalFooter" th:replace="add-item-basket :: addItemBasketFooter"></th:block>
         </th:block>
+        <th:block th:replace="~{modal :: modalfragment(
+            modalId='addItemModal', 
+            modalTitle='Add Item',
+            modalBody=~{add-item-basket :: addItemBasket},
+            modalFooter=~{add-item-basket :: addItemBasketFooter})}"></th:block>
         <div th:replace="~{footer :: scriptfragment}"></div>
     </body>
 </html>

@@ -112,14 +112,16 @@
       </div>
     </div>
     <!-- MODAL-->
-    <th:block th:replace="~{modal :: modalfragment(modalId='addProductModal', modalTitle='Add Product')}">
-      <th:block th:fragment="modalBody" th:replace="add-product :: addProductForm"></th:block>
-      <th:block th:fragment="modalFooter"></th:block>
-    </th:block>
-    <th:block th:replace="~{modal :: modalfragment(modalId='editProductModal', modalTitle='Update Product')}">
-      <th:block th:fragment="modalBody" th:replace="edit-product :: editProductForm"></th:block>
-      <th:block th:fragment="modalFooter"></th:block>
-    </th:block>
+    <th:block th:replace="~{modal :: modalfragment(
+      modalId='addProductModal', 
+      modalTitle='Add Product',
+      modalBody=~{add-product :: addProductForm},
+      modalFooter=~{empty :: empty})}"></th:block>
+    <th:block th:replace="~{modal :: modalfragment(
+      modalId='editProductModal', 
+      modalTitle='Update Product',
+      modalBody=~{edit-product :: editProductForm},
+      modalFooter=~{empty :: empty})}"></th:block>
   </body>
   <div th:replace="~{footer :: scriptfragment}"></div>
 </html>

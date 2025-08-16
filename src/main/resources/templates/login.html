@@ -6,16 +6,21 @@
       <h5 class="mb-3">MEALMATIC</h5>
       <p class="mb-2">Enter TCKN and PIN</p>
       <form th:action="@{/login}" method="post" id="loginForm">
-        <input type="number" name="tckn" maxlength="11" class="form-control pin-input mb-3" placeholder="TCKN"/>
+        <input type="text" pattern="\d{11}" maxlength="11" name="tckn" class="form-control pin-input mb-3" placeholder="TCKN"/>
         <input type="password" name="pass" maxlength="6" class="form-control pin-input mb-3" placeholder="******"/>
         <input class="btn btn-login w-100" type="button" value="Login" onclick="submitLoginForm()"/>
       </form>
     </section>
     <!-- MODAL-->
-    <th:block th:replace="~{modal :: modalfragment(modalId='loginErrorModal', modalTitle='Error')}">
+    <!--<th:block th:replace="~{modal :: modalfragment(modalId='loginErrorModal', modalTitle='Error')}">
       <th:block th:fragment="modalBody" th:replace="login-modal-body :: loginModalBody"></th:block>
       <th:block th:fragment="modalFooter"></th:block>
-    </th:block>
+    </th:block>-->
+    <th:block th:replace="~{modal :: modalfragment(
+      modalId='loginErrorModal', 
+      modalTitle='Error',
+      modalBody=~{login-modal-body :: loginModalBody},
+      modalFooter=~{empty :: empty})}"></th:block>
 
     <div th:replace="~{footer :: scriptfragment}"></div>
   </body>

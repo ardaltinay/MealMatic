@@ -59,18 +59,18 @@ function submitAddProductForm() {
 }
 
 function deleteProduct(id) {
-    $.delete('/admin/delete-product/' + id, function(data) {
-            if (data.success) {
-                alert("Product deleted successfully!");// Refresh the product list
-            } else {
-                $("#loginErrorModal .modal-body").text("Error while deleting Product object!");
-                $("#loginErrorModal").modal("show");
-            }
-        }, function() {
+    $.ajax({
+        url: "/admin/delete-product/" + id,
+        type: "DELETE",   // Burada DELETE kullanıyoruz
+        success: function(response) {
+            alert("Product deleted successfully!");
+            location.reload();
+        },
+        error: function(xhr, status, error) {
             $("#loginErrorModal .modal-body").text("Error while deleting Product object!");
             $("#loginErrorModal").modal("show");
         }
-    );
+    });
 }
 
 function editProduct(id) {
@@ -96,10 +96,13 @@ function submitEditProductForm() {
     }, function(data) {
         if (data.success) {
             $('#editProductModal').modal('hide');
-            alert("Product updated successfully!");
+            location.reload();
+            $(".nav-link").removeClass("active");
+            $("#menu-tab").addClass("active");
         } else {
             $("#loginErrorModal .modal-body").text("Error while updating Product object!");
             $("#loginErrorModal").modal("show");
         }
     });
 }
+

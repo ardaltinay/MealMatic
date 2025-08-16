@@ -2,10 +2,12 @@ package com.ardaltinay.MealMatic.controller;
 
 import com.ardaltinay.MealMatic.dto.CreateEmployeeRequest;
 import com.ardaltinay.MealMatic.dto.CreateProductRequest;
+import com.ardaltinay.MealMatic.dto.UpdateProductRequest;
 import com.ardaltinay.MealMatic.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,6 +44,12 @@ public class AdminController {
         return adminService.createProduct(request);
     }
 
+    @PostMapping("/update-product")
+    @ResponseBody
+    public Map<String, Object> updateProduct(@ModelAttribute UpdateProductRequest request) {
+        return adminService.updateProduct(request);
+    }
+
     @GetMapping("/get-products")
     public ModelAndView getProducts(ModelAndView modelAndView) {
         return adminService.getProducts(modelAndView);
@@ -51,5 +59,11 @@ public class AdminController {
     @ResponseBody
     public Map<String, Object> getProduct(@PathVariable String id) {
         return adminService.getProduct(id);
+    }
+
+    @DeleteMapping("/delete-product/{id}")
+    @ResponseBody
+    public Map<String, Object> deleteProduct(@PathVariable String id) {
+        return adminService.deleteProduct(id);
     }
 }
